@@ -38,9 +38,9 @@ public class TodoController {
         Todo existingTodo = new Todo();
         try{
             existingTodo = todoRepository.findById(id).get();
+            existingTodo.setTitle(todo.getTitle());
             existingTodo.setDescription(todo.getDescription());
             existingTodo.setComplete(todo.isComplete());
-            existingTodo.setTitle(todo.getTitle());
             todoRepository.save(existingTodo);
         } catch(NoSuchElementException e) {
             System.out.println(e.getMessage());
